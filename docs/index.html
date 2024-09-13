@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DMR</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+    <link
+      href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300;400;500;600&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link href='https://fonts.googleapis.com/css?family=Architects Daughter' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto+Mono&display=swap" rel="stylesheet">
+
+    <!-- Bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/bulma_toggle.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/5fd1dd8417.js" crossorigin="anonymous"></script>
+
+    <!-- Academicons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png"/>
+    <link rel="icon" sizes="32x32" href="./assets/favicon-32x32.png"/>
+    <link rel="icon" sizes="16x16" href="./assets/favicon-16x16.png"/>
+  </head>
+
+  <body>
+
+    <!-- title / authors / icons -->
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-widescreen has-text-centered">
+          <!-- title -->
+          <h1 class="title is-size-1 is-size-2-mobile publication-title">
+            Dynamic Motion Recovery<br/>from Partial Point Cloud Sequence
+          </h1>
+          <div class="is-size-4-tablet publication-institute">
+            <span class="author-block">ICCV 2023<br/></span>
+          </div>
+
+          <!-- authors -->
+          <div class="container is-max-desktop has-text-centered author-list">
+            <div class="columns is-mobile is-centered is-gapless">
+              <div class="column is-2-tablet is-size-5-tablet publication-authors">
+                <a class="author-blocks" href="https://hojunjang17.github.io">Hojun Jang</a>
+              </div>
+              <div class="column is-2-tablet is-size-5-tablet publication-authors">
+                <a class="author-blocks" href="https://3d.snu.ac.kr/members">Minkwan Kim</a>
+              </div>
+              <div class="column is-2-tablet is-size-5-tablet publication-authors">
+                <a class="author-blocks" href="https://jinseokbae.github.io/">Jinseok Bae</a>
+              </div>
+              <div class="column is-2-tablet is-size-5-tablet publication-authors">
+                <a class="author-blocks" href="http://3d.snu.ac.kr/members">Young Min Kim</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="is-size-5-tablet publication-institute">
+            <span class="author-block">Seoul National University</span>
+          </div>
+          
+          <div class="logo-list">
+            <a class="lab-logo" href="https://3d.snu.ac.kr">
+              <img src="./assets/3dv.png">
+            </a>
+          </div>
+
+          <!-- icons -->
+          <div class="is-size-5 link-blocks">
+            <a class="button link-button is-rounded" href="https://openaccess.thecvf.com/content/ICCV2023/html/Jang_Dynamic_Mesh_Recovery_from_Partial_Point_Cloud_Sequence_ICCV_2023_paper.html">
+              <span class="icon">
+                <i class="fa-solid fa-file"></i>
+              </span>
+              <span>Paper</span>
+            </a>
+            <a class="button link-button is-rounded" href="">
+              <span class="icon">
+                <i class="ai ai-arxiv"></i>
+              </span>
+              <span>arXiv</span>
+            </a>
+            <a class="button link-button is-rounded" href="https://youtu.be/OgineYrkgRE">
+              <span class="icon">
+                <i class="fa-brands fa-youtube"></i>
+              </span>
+              <span>Video</span>
+            </a>
+            <a class="button link-button is-rounded" href="https://github.com/hojunJang17/DynamicMeshRecovery">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>Code</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- teasor -->
+    <section class="hero">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <img src="./assets/teaser.png" width="80%" style="display: block; margin: auto" />
+          <h2 class="tldr">
+            <i>Reusable 3D <b>kinematic priors</b> from a large-scale motion dataset can provide<br/>strong structural semantics to recover dynamic 3D mesh in various scenarios.</i>
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Abstract
+          </h2>
+          <div class="content has-text-justified">
+            <p>
+              The exact 3D dynamics of the human body provides crucial evidence to analyze the consequences of the physical interaction between the body and the environment, which can eventually assist everyday activities in a wide range of applications.
+              However, optimizing for 3D configurations from image observation requires a significant amount of computation, whereas real-world 3D measurements often suffer from noisy observation or complex occlusion.
+              We resolve the challenge by learning a latent distribution representing strong temporal priors.
+              We use a conditional variational autoencoder (CVAE) architecture with a transformer to train the motion priors with a large-scale motion dataset.
+              Then our feature follower effectively aligns the feature spaces of noisy, partial observation with the necessary input for pre-trained motion priors, and quickly recovers a complete mesh sequence of motion.
+              We demonstrate that the transformer-based autoencoder can collect necessary spatio-temporal correlations robust to various adversaries, such as missing temporal frames, or noisy observation under severe occlusion.
+              Our framework is general and can be applied to recover the full 3D dynamics of other subjects with parametric representations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is full-width is-centered has-text-centered">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Video (todo)
+          </h2>
+        </div>
+        <div class="publication-video">
+          <iframe
+            src="https://www.youtube.com/embed/7mWPYGRfk-I?si=x0xlB16kK1TOXN_I"
+            allow="autoplay; encrypted-media"
+            allowfullscreen="true"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+-->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Method
+          </h2>
+          <img src="./assets/method_new.png" width="90%" style="display: block; margin: auto" />
+        </div>
+          <p class="normal-text has-text-justified">
+            The <b><font color='gray'>Kinematics Learner</font></b>, the point cloud feature encoder followed by the parameter estimator, learns how to recover mesh from the complete point cloud sequence input.
+            The <b><font color='#1e81b0'>Feature Follower</font></b> then follows the encoding of the feature encoder in the kinematics learner.
+            The learning of the feature encoding makes our model to effectively handle noisy, partial point cloud sequence inputs.
+          </p>
+      </div>
+      </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Results <font size="4%">(Human, Synthetic)</font>
+          </h2>
+        </div>
+        <table>
+          <tr>
+            <td class="gifs"><img src="./assets/gifs/human_input_10.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_ours_10.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_votehmr_10.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_zuo_10.gif"/></td>
+          </tr>
+          <tr>
+            <td class="gifs"><img src="./assets/gifs/human_input_6.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_ours_6.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_votehmr_6.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_zuo_6.gif"/></td>
+          </tr>
+          <tr>
+            <th style="text-align:center" class="normal-text">Input</th></div>
+            <th style="text-align:center" class="normal-text">Ours</th>
+            <th style="text-align:center" class="normal-text">VoteHMR</th>
+            <th style="text-align:center" class="normal-text">Zuo <i>et al.</i></th>
+          </tr>
+        </table>
+        <br/>
+        <p align="left" class="normal-text has-text-justified">
+          Qualitative results on <a href="https://www.di.ens.fr/willow/research/surreal/data/">SURREAL</a> dataset which is a synthetic human motion dataset.
+          Baselines estimate the parameters for individual frames of input, and result in unnatural jittering motion within the sequence.
+          On the other hand, our method correctly captures temporal correlation and reconstruct meshes with smooth motion. 
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Results <font size="4%">(Human, Real)</font>
+          </h2>
+        </div>
+        <table>
+          <tr>
+            <td class="gifs"><img src="./assets/gifs/human_input_5.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_ours_5.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_votehmr_5.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_zuo_5.gif"/></td>
+          </tr>
+          <tr>
+            <td class="gifs"><img src="./assets/gifs/human_input_0.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_ours_0.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_votehmr_0.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/human_zuo_0.gif"/></td>
+          </tr>
+          <tr>
+            <th style="text-align:center">Input</th>
+            <th style="text-align:center">Ours</th>
+            <th style="text-align:center">VoteHMR</th>
+            <th style="text-align:center">Zuo <i>et al.</i></th>
+          </tr>
+        </table>
+        <br/>
+        <p align="left" class="normal-text has-text-justified">
+          Qualitative results on <a href="https://ieeexplore.ieee.org/document/6474999">Berkeley MHAD</a> dataset which is a real human motion dataset.
+          Even though the input point cloud is extremely noisy and the network is not fine-tuned to the noisy real data, our model recovers the mesh sequence.
+        </p>
+      </div>
+    </section>
+
+    <section class="section"></section>
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">
+            Results <font size="4%">(Hand, Synthetic)</font>
+          </h2>
+        </div>
+        <table>
+          <tr>
+            <td class="gifs"><img src="./assets/gifs/hand_input_2.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/hand_gt_2.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/hand_ours_2.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/hand_votehmr_2.gif"/></td>
+          </tr>
+          <tr>
+            <td class="gifs"><img src="./assets/gifs/hand_input_4.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/hand_gt_4.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/hand_ours_4.gif"/></td>
+            <td class="gifs"><img src="./assets/gifs/hand_votehmr_4.gif"/></td>
+          </tr>
+          <tr>
+            <th style="text-align:center">Input</th>
+            <th style="text-align:center">GT</th>
+            <th style="text-align:center">Ours</th>
+            <th style="text-align:center">VoteHMR-M</th>
+          </tr>
+        </table>
+        <br/>
+        <p align="left" class="normal-text has-text-justified">
+          Qualitative results on <a href="https://mks0601.github.io/InterHand2.6M/">InterHand2.6M</a> & <a href="https://lmb.informatik.uni-freiburg.de/resources/datasets/HanCo.en.html">HanCo</a> dataset.
+          VoteHMR-M is our modification of VoteHMR to fit the MANO hand model.
+          In the paper, we include quantitative analysis that our method achieves better result.
+        </p>
+      </div>
+    </section>
+
+    <!-- BibTex sectoion -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="column is-full-width is-centered has-text-centered has-text-left-mobile">
+          <h2 class="subtitle is-size-3 has-text-weight-medium publication-keywords">BibTeX</h2>
+        </div>
+        <div class="box bibtex-box">
+          <pre>
+@InProceedings{Jang_2023_ICCV,
+  author    = {Jang, Hojun and Kim, Minkwan and Bae, Jinseok and Kim, Young Min},
+  title     = {Dynamic Mesh Recovery from Partial Point Cloud Sequence},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  month     = {October},
+  year      = {2023},
+  pages     = {15074-15084}
+}
+          </pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer section -->
+    <footer class="footer" style="padding-top: 1rem">
+      <!-- navigation -->
+      <a role="button" class="navbar-burger" data-target="moreResearch" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+      <div class="navbar-menu" id="moreResearch">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center">
+          <div class="block is-flex" style="margin-bottom: 0px">
+            <a class="navbar-item" href="https://hojunjang17.github.io">
+              <span class="icon">
+                <i class="fas fa-home"></i>
+              </span>
+            </a>
+            <a class="navbar-item" href="https://github.com/hojunJang17">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- license -->
+      <div class="content has-text-centered" style="margin-top: 1.6rem">
+        <p>
+          This website is licensed under a
+          <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+            >Creative Commons Attribution-ShareAlike 4.0 International License</a
+          >
+        </p>
+      </div>
+    </footer>
+  </body>
+
+</html>
